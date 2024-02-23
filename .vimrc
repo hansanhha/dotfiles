@@ -1,39 +1,32 @@
-call plug#begin()
-Plug 'junegunn/vim-easy-align'
+source $VIMRUNTIME/defaults.vim
 
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" PLUGINS ------------------------------------------------------ {{{
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+call plug#begin('~/.vim/plugged')
+	Plug 'junegunn/vim-easy-align'
 
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+	Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plug 'fatih/vim-go', { 'tag': '*' }
+	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+	Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'fatih/vim-go', { 'tag': '*' }
 
-Plug '~/my-prototype-plugin'
+	Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+	Plug '~/my-prototype-plugin'
 
 call plug#end()
 
-set number
-set ignorecase 
-set smartcase
-set gdefault
-set colorcolumn=80
-set textwidth=79
-set cursorline
-set ruler
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set copyindent
+" }}}
+
+" MAPPINGS ------------------------------------------------------ {{{
 
 let mapleader=","
 
@@ -61,4 +54,49 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-w>j
 nmap <C-K> <C-w>k
 nmap <C-L> <C-w>l
+
+" }}}
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Clear status line when vimrc is reloaded.
+set statusline=
+
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+
+" Show the status on the second to last line.
+set laststatus=2
+
+" }}}
+
+set number
+set ignorecase 
+set smartcase
+"set gdefault
+"set colorcolumn=80
+"set textwidth=79
+set cursorline
+"set ruler
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set copyindent
+set foldmethod=marker
+set nocompatible
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
 
