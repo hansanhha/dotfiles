@@ -18,10 +18,6 @@ function doIt() {
             sudo apt-get install vim -y
         elif grep -qEi "(fedora|redhat)" /etc/os-release; then
             sudo yum install vim -y
-        else
-            echo "Unsupported Linux distro. Please install Vim manually."
-            exit 1
-        fi
     fi
 
     # Install vim-plug first
@@ -30,6 +26,18 @@ function doIt() {
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     vim +PlugInstall +qall
+
+    # if on Linux set the Caps_Lock key change the function to hangul key
+    if [[ "$(uname)" == "Linux" ]; then
+
+        read -p "Do you want to change the function of the caps_lock key to a Korean/English conversion key? (y/n)" -n 1;
+        echo "";
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo "Requires reboot to apply the changed caps_lock key function"
+            xmodmap .Linux-Xmodmap
+        fi;
+    fi;
+
 }
 
 if [ "$1" == "--force" -o "$1" == ".f" ]; then
