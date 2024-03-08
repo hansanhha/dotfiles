@@ -4,8 +4,8 @@ set -o pipefail
 
 cd "$(dirname "{BASH_SOURCE}")";
 
-function doIt() {
-    rsync --exclude ".git/" --exclude "bootstrap.sh" \
+function init() {
+    rsync --exclude ".git/" --exclude "init.sh" \
         --exclude "README.md" -avh --no-perms . ~;
 
     # Check if vim is installed
@@ -21,23 +21,12 @@ function doIt() {
     fi
 
     # Install vim-plug first
+    echo "Installing plugin...\n"
     rm -rf /.vim/autoload/plug.vim
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     vim +PlugInstall +qall
-
-    # if on Linux set the Caps_Lock key change the function to hangul key
-    if [[ "$(uname)" == "Linux" ]; then
-
-        read -p "Do you want to change the function of the caps_lock key to a Korean/English conversion key? (y/n)" -n 1;
-        echo "";
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            echo "Requires reboot to apply the changed caps_lock key function"
-            xmodmap .Linux-Xmodmap
-        fi;
-    fi;
-
 }
 
 if [ "$1" == "--force" -o "$1" == ".f" ]; then
@@ -47,7 +36,7 @@ else
     sure? (y/n) " -n 1;
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        doIt;
+        init;
     fi;
 fi;
-unset doIt;
+unset init;
