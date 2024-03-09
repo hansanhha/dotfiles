@@ -18,12 +18,13 @@ function init() {
             sudo apt-get install vim -y
         elif grep -qEi "(fedora|redhat)" /etc/os-release; then
             sudo yum install vim -y
+        fi
     fi
 
     # Install vim-plug first
     echo "Installing plugin...\n"
     rm -rf /.vim/autoload/plug.vim
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     vim +PlugInstall +qall

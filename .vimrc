@@ -3,26 +3,14 @@ source $VIMRUNTIME/defaults.vim
 " PLUGINS ------------------------------------------------------ {{{
 
 call plug#begin('~/.vim/plugged')
-	Plug 'junegunn/vim-easy-align'
-
-	Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
 	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-	Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-	Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-	Plug 'fatih/vim-go', { 'tag': '*' }
-
-	Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-	Plug '~/my-prototype-plugin'
-
+    Plug 'dense-analysis/ale'
 call plug#end()
 
 " }}}
@@ -32,7 +20,7 @@ call plug#end()
 let mapleader=","
 
 " The Nerd Tree 
-nmap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
 let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
@@ -41,20 +29,12 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Tagbar 
-nmap <leader>t :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_width=40
 let g:tagbar_autofocus=40
 let g:tagbar_autoclose=0
 let g:tagbar_iconchard=['>', 'v']
 let g:tagbar_systemenc='utf-8'
-
-" miniBufExpl
-nmap <C-n> :bn<CR>
-nmap <C-m> :bp<CR>
-nmap <C-H> <C-W>h
-nmap <C-J> <C-w>j
-nmap <C-K> <C-w>k
-nmap <C-L> <C-w>l
 
 " }}}
 
