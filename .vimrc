@@ -7,7 +7,8 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
 
 	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -76,6 +77,11 @@ set laststatus=2
 
 " }}}
 
+
+" SETTINGS ------------------------------------------------------ {{{
+
+set hidden
+set autowrite
 set number
 set ignorecase 
 set smartcase
@@ -88,6 +94,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+"set cindent
+set smartindent
 set autoindent
 set copyindent
 set foldmethod=marker
@@ -101,3 +109,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" }}}
+
+" Global Variables ------------------------------------------------------ {{{
+
+let g:UltiSnipsExpandOrJumpTrigger = "<tab>"
+
+" }}}
