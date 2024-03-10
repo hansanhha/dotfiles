@@ -3,7 +3,7 @@ source $VIMRUNTIME/defaults.vim
 " PLUGINS ------------------------------------------------------ {{{
 
 call plug#begin('~/.vim/plugged')
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
@@ -35,6 +35,10 @@ let g:tagbar_autofocus=40
 let g:tagbar_autoclose=0
 let g:tagbar_iconchard=['>', 'v']
 let g:tagbar_systemenc='utf-8'
+
+" save key
+inoremap <C-s> <ESC>:w<CR>a
+
 
 " }}}
 
