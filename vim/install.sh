@@ -13,7 +13,7 @@ if ! [[ $REPLY =~ ^[Yy]$ ]]; then
     exit 0;
 fi;
 
-rsync -avh --no-perms . ~;
+rsync --exclude 'install.sh' -avh --no-perms . ~;
 
 # Check if vim is installed
 #
