@@ -36,6 +36,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
+$HOME/.fzf/install -y
+
 installgit() 
 {
     OS=$(uname -s);
