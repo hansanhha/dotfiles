@@ -37,26 +37,3 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 vim +PlugInstall +qall
 
-# Install ag 
-echo "Installing ag...\n"
-OS=$(uname -s);
-case $OS in
-    Linux)
-        # Check the Linux distro
-        if grep -qEi "(debian|ubuntu)" /etc/os-release; then
-            sudo apt-get update
-            apt-get install silversearcher-ag
-        elif grep -qEi "(fedora|redhat)" /etc/os-release; then
-            yum install the_silver_searcher
-        fi;
-    ;;
-    Darwin)
-        # Check if Homebrew is installed 
-        if ! command -v brew > /dev/null 2>&1; then
-            curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-        fi; 
-        brew install the_silver_searcher
-    ;;  
-    CYGWIN*|MINGW32*|MSYS*|MINGW*)
-    ;;
-esac

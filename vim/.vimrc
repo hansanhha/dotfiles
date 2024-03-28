@@ -128,8 +128,11 @@ filetype indent on
 " CUSTOM MAPPINGS ------------------------------------------------------ {{{
 
 " save key
-inoremap <C-s> <ESC>:w<CR>a
+inoremap <C-s> <ESC>:w<CR>
 nnoremap <C-s> :w<CR>
+
+" buffer key
+nnoremap <Tab> :bn<CR>
 
 " }}}
 
