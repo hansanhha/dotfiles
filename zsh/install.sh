@@ -15,6 +15,8 @@ fi;
 
 rsync --exclude 'install.sh' -avh --no-perms . ~;
 
+OS=$(uname -s);
+
 # Check if Git is installed
 if ! command -v git > /dev/null 2>&1; then
     installgit
@@ -25,7 +27,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 fi;
 
-# oh-my-zsh plugin installing
+# install oh-my-zsh plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -38,9 +40,10 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 $HOME/.fzf/install -y
 
+installapp
+
 installgit() 
 {
-    OS=$(uname -s);
     case $OS in
         Linux)
             # Check the Linux distro
@@ -63,5 +66,27 @@ installgit()
     esac
 }
 
+installapp() 
+{
+    case $OS in
+        Linux)
+            curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+        ;;
+        Darwin)
+            if ! command -v brew > /dev/null 2>&1; then
+                curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+            fi; 
+            brew install zoxide;
+        ;;  
+        CYGWIN*|MINGW32*|MSYS*|MINGW*)
+        ;;
+    esac
+}
 source ~/.zshrc;
 unset installgit
+unset installapp
+unset OS
+
+# zoxide init
+zoxide init cmd --cd zsh
+
