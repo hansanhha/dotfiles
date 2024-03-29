@@ -96,7 +96,7 @@ set laststatus=2
 
 set hidden
 set autowrite
-set number
+"set number
 set ignorecase 
 set smartcase
 "set gdefault
@@ -133,6 +133,6 @@ nnoremap <C-s> :w<CR>
 
 " buffer key
 nnoremap <Tab> :bn<CR>
-
+nnoremap <S-Tab> :bp<CR>
 " }}}
 
