@@ -11,9 +11,6 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
-    Plug 'dense-analysis/ale'
-    Plug 'pechorin/any-jump.vim'
-
 call plug#end()
 
 " }}}
@@ -30,46 +27,6 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-" Ultisnips
-let g:UltiSnipsExpandOrJumpTrigger = "<tab>"
-
-" any-jump
-nnoremap <leader>j :AnyJump<CR>
-xnoremap <leader>j :AnyJumpVisual<CR>
-
-" Normal mode: open previous opened file (after jump)
-nnoremap <leader>ab :AnyJumpBack<CR>
-
-" Normal mode: open last closed search window again
-nnoremap <leader>al :AnyJumpLastResults<CR>
-
-let g:any_jump_colors = {
-      \"plain_text":         "Comment",
-      \"preview":            "Comment",
-      \"preview_keyword":    "Operator",
-      \"heading_text":       "Function",
-      \"heading_keyword":    "Identifier",
-      \"group_text":         "Comment",
-      \"group_name":         "Function",
-      \"more_button":        "Operator",
-      \"more_explain":       "Comment",
-      \"result_line_number": "Comment",
-      \"result_text":        "Statement",
-      \"result_path":        "String",
-      \"help":               "Comment"
-      \}
-
-hi Pmenu ctermbg=DarkGray guibg=DarkGray
-
-let g:any_jump_list_numbers = 1  
-let g:any_jump_references_enabled = 1
-let g:any_jump_grouping_enabled = 1
-let g:any_jump_search_prefered_engine = 'ag'
-let g:any_jump_results_ui_style = 'filename_first'
-let g:any_jump_window_width_ratio  = 0.6
-let g:any_jump_window_height_ratio = 0.6
-let g:any_jump_window_top_offset   = 4
 
 " }}}
 
@@ -134,5 +91,9 @@ nnoremap <C-s> :w<CR>
 " buffer key
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
+
+
+" Tab Key
+nnoremap <Space><Tab> :tabNext<CR>
 " }}}
 
